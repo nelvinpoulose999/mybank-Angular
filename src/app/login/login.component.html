@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="main">
+                <h3 class="h">Bank Account Login<marquee scrollamount=6s><h4>{{aim}}</h4></marquee></h3>
+                <div class="box1">
+                 <input id="log" type="text" placeholder="Account Number" (change)='accChange($event)' [value]='accnum' class="input">
+                </div>
+                <div class="box2">
+                 <input id="pass" type="password" placeholder="Password" (change)='pwdChange($event)' class="input">
+                </div>
+                <div class="for1" >
+                 <a href="#" class="for">Forget Password?</a>
+                </div>
+                <div class="but">
+                 <button  type="button" class="btn btn-primary" style="width: 80%; background-color: brown;" (click)='login()'>LogIn</button>
+                </div>
+                <div class="but">
+                 <button type="button" class="btn btn-primary" style="width: 80%; background-color: crimson;">Create Account</button>
+                </div>
+                 
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div> 
