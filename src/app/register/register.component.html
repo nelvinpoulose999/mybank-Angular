@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="main">
+                <h3 class="h">Register Account</h3>
+                <div class="box1">
+                    <input id="log" type="text" placeholder="Username" [(ngModel)]="uname" class="input">
+                </div>
+                <div class="box1">
+                    <input id="log" type="text" placeholder="Account Number" [(ngModel)]="accno" class="input">
+                </div>
+                <div class="box2">
+                    <input id="pass" type="password" placeholder="Password" [(ngModel)]="pswd" class="input">
+                </div>
+                <div class="but">
+                    <button type="button" class="btn btn-primary" style="width: 80%; background-color: brown;"(click)='register()'>Register</button>
+                </div>
+                <div class="for1">
+                    <h6>Already a member?<a href="#" class="for">Login</a></h6>
+                </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div> 
+

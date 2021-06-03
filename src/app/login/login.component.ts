@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   aim='Your Perfect Banking Partner';
-  accnum='Account Number Please';
-  accno=' '
+
+  accno='Account Number Please'
   pswd=''
   accountdetails:any = {
     1000: { name: 'ajay', acno: 1000, password: 'testone', balance: 5000 },
@@ -17,21 +18,26 @@ export class LoginComponent implements OnInit {
     1003: { name: 'raj', acno: 1003, password: 'testfour', balance: 7000 }
 }
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
-  accChange(event:any){
-    this.accno=event.target.value
-    console.log(event.target.value);
-  }
-  pwdChange(event:any){
-    this.pswd=event.target.value;
-    console.log(event.target.value);
-  }
+
+  // accChange(event:any){
+  //   this.accno=event.target.value
+  //   console.log(event.target.value);
+  // }
+
+  // pwdChange(event:any){
+  //   this.pswd=event.target.value;
+  //   console.log(event.target.value);
+  // }
+
 login(){
-  var acno=this.accno
-  var password=this.pswd
+  // console.log(this.accno,this.pswd);
+  
+  var acno=this.accno;
+  var password=this.pswd;
   let dataset=this.accountdetails
   if (acno in dataset){
     if (password==dataset[acno]['password']){
@@ -44,5 +50,9 @@ login(){
   else{
     alert('Invalid account');
   }
+}
+
+register(){
+this.router.navigateByUrl('register')
 }
 }
