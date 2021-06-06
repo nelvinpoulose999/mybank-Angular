@@ -4,15 +4,15 @@
         <div class="col-4">
             <div class="main">
                 <h3 class="h">Register Account</h3>
-                <form (ngSubmit)='register()'>
+                <form [formGroup]='registerForm' (ngSubmit)='register()'>
                     <div class="box1">
-                        <input id="log" type="text" placeholder="Username" name='uname' [(ngModel)]="uname" class="input">
+                        <input id="log" type="text" placeholder="Username" name='uname' formControlName="uname" class="input">
                     </div>
                     <div class="box1">
-                        <input id="log" type="text" placeholder="Account Number" name='accno' [(ngModel)]="accno" class="input">
+                        <input id="log" type="text" placeholder="Account Number" name='accno' formControlName="accno" class="input">
                     </div>
                     <div class="box2">
-                        <input id="pass" type="password" placeholder="Password" name='pswd' [(ngModel)]="pswd" class="input">
+                        <input id="pass" type="password" placeholder="Password" name='pswd' formControlName="pswd" class="input">
                     </div>
                     <div class="but">
                         <button type="submit" class="btn btn-primary" style="width: 80%; background-color: brown;"
