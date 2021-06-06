@@ -3,25 +3,32 @@
         <div class="col-4"></div>
         <div class="col-4">
             <div class="main">
-                <h3 class="h">Bank Account Login<marquee scrollamount=6s><h4>{{aim}}</h4></marquee></h3>
-                <div class="box1">
-                 <input id="log" type="text" placeholder="Account Number" [(ngModel)]="accno"  class="input">
-                </div>
-                <div class="box2">
-                 <input id="pass" type="password" placeholder="Password" [(ngModel)]="pswd" class="input">
-                </div>
-                <div class="for1" >
-                 <a href="#" class="for">Forget Password?</a>
-                </div>
-                <div class="but">
-                 <button  type="button" class="btn btn-primary" style="width: 80%; background-color: brown;" (click)='login()'>LogIn</button>
-                </div>
-                <div class="but">
-                 <button type="button" class="btn btn-primary" style="width: 80%; background-color: crimson;" (click)='register()'>Create Account</button>
-                </div>
-                 
+                <h3 class="h">Bank Account Login<marquee scrollamount=6s>
+                        <h4>{{aim}}</h4>
+                    </marquee>
+                </h3>
+                <form (ngSubmit)='login()'>
+                    <div class="box1">
+                        <input id="log" type="text" placeholder="Account Number" name='accno' [(ngModel)]="accno" class="input">
+                    </div>
+                    <div class="box2">
+                        <input id="pass" type="password" placeholder="Password" name='pswd' [(ngModel)]="pswd" class="input">
+                    </div>
+                    <div class="for1">
+                        <a href="#" class="for">Forget Password?</a>
+                    </div>
+                    <div class="but">
+                        <button type="submit" class="btn btn-primary" style="width: 80%; background-color: brown;"
+                            >LogIn</button>
+                    </div>
+                    <div class="but">
+                        <button type="button" class="btn btn-primary" style="width: 80%; background-color: crimson;"
+                            (click)='register()'>Create Account</button>
+                    </div>
+                </form>
+
             </div>
         </div>
         <div class="col-4"></div>
-    </div> 
-</div> 
+    </div>
+</div>

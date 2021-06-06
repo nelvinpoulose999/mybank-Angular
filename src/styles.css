@@ -12,6 +12,16 @@ body{
     border-radius: 5px;
     border: 1px solid grey;
 }
+.main1{
+    text-align: center;
+    width: 100%;
+    background-color: #ffffff00;
+    margin-top: 25%;
+    padding-top: 5%;
+    padding-bottom: 10%; 
+    border-radius: 5px;
+    border: 1px solid grey;
+}
 .h{
     padding-top: 10%;
     font-size: 30px;

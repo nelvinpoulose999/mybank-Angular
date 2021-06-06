@@ -1,1 +1,52 @@
-<p>dashbord works!</p>
+<div class="container">
+    <div class="row">
+        <h4 style="text-align: center;">Welcome User</h4>
+        <div class="col-4">
+            <div class="main">
+                <form (ngSubmit)='deposit()'>
+                    <h3 class="h">
+                        <marquee direction='right' scrollamount=10s>Deposit</marquee>
+                    </h3>
+                    <div class="box1">
+                        <input id="log" type="text"  name='accno' [(ngModel)]='accno' placeholder="Account Number" class="input">
+                    </div>
+                    <div class="box2">
+                        <input id="pass" type="password" name='pswd' [(ngModel)]='pswd' placeholder="Password" class="input">
+                    </div>
+                    <div class="box2">
+                        <input id="amo" type="text" name='amount' [(ngModel)]='amount' placeholder="Amount" class="input">
+                    </div>
+                    <div class="but">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 80%; background-color: brown;">Deposit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-4">
+
+        </div>
+        <div class="col-4">
+            <form (ngSubmit)='withdraw()'>
+                <div class="main">
+                    <h3 class="h">
+                        <marquee direction='left' scrollamount=10s>Withdrawl</marquee>
+                    </h3>
+                    <div class="box1">
+                        <input id="log" type="text" name='waccno' [(ngModel)]='waccno' placeholder="Account Number" class="input">
+                    </div>
+                    <div class="box2">
+                        <input id="pass" type="password" name='wpswd' [(ngModel)]='wpswd' placeholder="Password" class="input">
+                    </div>
+                    <div class="box2">
+                        <input id="amo" type="text" name='wamount' [(ngModel)]='wamount' placeholder="Amount" class="input">
+                    </div>
+                    <div class="but">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 80%; background-color: crimson;">Withdrawl</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -30,5 +30,67 @@ register(name:any,acno:any,password:any){
     return true
   }
 }
+login(accno:any,pswd:any){
+ 
+  let dataset=this.accountdetails
+  if (accno in dataset){
+    if (pswd==dataset[accno]['password']){
+      return true;
+    }
+    else{
+      alert('Invalid password');
+      return false
+    }
+  }
+  else{
+    alert('Invalid account');
+    return false
+  }
+}
+
+deposit(accno:any,pswd:any,amt:any){
+  var amount=parseInt(amt)
+  let dataset=this.accountdetails
+  if (accno in dataset){
+    if (pswd==dataset[accno]['password']){
+      dataset[accno]['balance']+=amount
+      return dataset[accno]['balance'];
+    }
+    else{
+      alert('Invalid password');
+      return false
+    }
+  }
+  else{
+    alert('Invalid account');
+    return false
+  }
+}
+
+withdraw(waccno:any,wpswd:any,wamt:any){
+  var amount=parseInt(wamt);
+  let dataset=this.accountdetails;
+  if(waccno in dataset){
+    if(wpswd==dataset[waccno]['password']){
+      if(amount<dataset[waccno]['balance']){
+      dataset[waccno]['balance']-=amount;
+      return dataset[waccno]['balance'];
+      }
+      else{
+        alert ('Insufficient balance');
+        return false;
+      }
+    }
+    else{
+      alert('Invalid password');
+      return false
+    }
+  }
+  else{
+    alert('Invalid account');
+    return false
+  }
+
+}
 }
 

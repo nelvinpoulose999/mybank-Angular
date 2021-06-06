@@ -30,22 +30,27 @@ export class LoginComponent implements OnInit {
 
 login(){
   // console.log(this.accno,this.pswd);
-  
   var acno=this.accno;
   var password=this.pswd;
-  let dataset=this.dataService.accountdetails
-  if (acno in dataset){
-    if (password==dataset[acno]['password']){
-      alert('Login success');
-      this.router.navigateByUrl('dashbord');
-    }
-    else{
-      alert('Invalid password');
-    }
+  const result=this.dataService.login(acno,password)
+  if (result){
+    alert('Login success');
+    this.router.navigateByUrl('dashbord');
   }
-  else{
-    alert('Invalid account');
-  }
+ 
+  // let dataset=this.dataService.accountdetails
+  // if (acno in dataset){
+  //   if (password==dataset[acno]['password']){
+  //     alert('Login success');
+  //     this.router.navigateByUrl('dashbord');
+  //   }
+  //   else{
+  //     alert('Invalid password');
+  //   }
+  // }
+  // else{
+  //   alert('Invalid account');
+  // }
 }
 
 register(){
