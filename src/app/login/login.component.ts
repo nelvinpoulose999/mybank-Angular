@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -8,12 +9,15 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  aim='Your Perfect Banking Partner';
+  aim = 'Your Perfect Banking Partner';
 
-  accno='Account Number Please'
-  pswd=''
-
-  constructor(private router:Router,private dataService:DataService) { }
+  accno = 'Account Number Please'
+  pswd = ''
+  loginForm = this.fb.group({
+    accno: ['', [Validators.required, Validators.pattern('[0-9]*')]],
+    pswd: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]]
+  })
+  constructor(private router: Router, private dataService: DataService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -28,32 +32,38 @@ export class LoginComponent implements OnInit {
   //   console.log(event.target.value);
   // }
 
-login(){
-  // console.log(this.accno,this.pswd);
-  var acno=this.accno;
-  var password=this.pswd;
-  const result=this.dataService.login(acno,password)
-  if (result){
-    alert('Login success');
-    this.router.navigateByUrl('dashbord');
-  }
- 
-  // let dataset=this.dataService.accountdetails
-  // if (acno in dataset){
-  //   if (password==dataset[acno]['password']){
-  //     alert('Login success');
-  //     this.router.navigateByUrl('dashbord');
-  //   }
-  //   else{
-  //     alert('Invalid password');
-  //   }
-  // }
-  // else{
-  //   alert('Invalid account');
-  // }
-}
+  login() {
+    // console.log(this.accno,this.pswd);
+    var acno = this.loginForm.value.accno;
+    var password = this.loginForm.value.pswd;
+    if (this.loginForm.valid) {
+      const result = this.dataService.login(acno, password)
+      if (result) {
+        alert('Login success');
+        this.router.navigateByUrl('dashbord');
+      }
+    }
+    else{
+      alert('invald form')
+    }
 
-register(){
-this.router.navigateByUrl('register')
-}
+
+    // let dataset=this.dataService.accountdetails
+    // if (acno in dataset){
+    //   if (password==dataset[acno]['password']){
+    //     alert('Login success');
+    //     this.router.navigateByUrl('dashbord');
+    //   }
+    //   else{
+    //     alert('Invalid password');
+    //   }
+    // }
+    // else{
+    //   alert('Invalid account');
+    // }
+  }
+
+  register() {
+    this.router.navigateByUrl('register')
+  }
 }

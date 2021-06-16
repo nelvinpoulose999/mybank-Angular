@@ -23,7 +23,9 @@ export class RegisterComponent implements OnInit {
   }
   register() {
     // alert('Register Clicked');
-
+    // if(this.registerForm.get('uname')?.errors){
+    //   alert('Invalid Username')
+    // }
     var accno = this.registerForm.value.accno
     var uname = this.registerForm.value.uname
     var pswd = this.registerForm.value.pswd

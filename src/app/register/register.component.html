@@ -8,12 +8,15 @@
                     <div class="box1">
                         <input id="log" type="text" placeholder="Username" name='uname' formControlName="uname" class="input">
                     </div>
+                    <div *ngIf="(this.registerForm.get('uname')?.touched || this.registerForm.get('uname')?.dirty) && this.registerForm.get('uname')?.errors" class="error">Invalid Username</div>
                     <div class="box1">
                         <input id="log" type="text" placeholder="Account Number" name='accno' formControlName="accno" class="input">
                     </div>
+                    <div *ngIf="(this.registerForm.get('accno')?.touched || this.registerForm.get('accno')?.dirty) && this.registerForm.get('accno')?.errors" class="error">Invalid Account Number</div>
                     <div class="box2">
                         <input id="pass" type="password" placeholder="Password" name='pswd' formControlName="pswd" class="input">
                     </div>
+                    <div *ngIf="(this.registerForm.get('pswd')?.touched || this.registerForm.get('pswd')?.dirty) && this.registerForm.get('pswd')?.errors" class="error">Invalid Password</div>
                     <div class="but">
                         <button type="submit" class="btn btn-primary" style="width: 80%; background-color: brown;"
                             >Register</button>

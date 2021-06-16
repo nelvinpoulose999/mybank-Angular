@@ -7,13 +7,15 @@
                         <h4>{{aim}}</h4>
                     </marquee>
                 </h3>
-                <form (ngSubmit)='login()'>
+                <form [formGroup]="loginForm" (ngSubmit)='login()'>
                     <div class="box1">
-                        <input id="log" type="text" placeholder="Account Number" name='accno' [(ngModel)]="accno" class="input">
+                        <input id="log" type="text" placeholder="Account Number" name='accno' formControlName="accno" class="input">
                     </div>
+                    <div *ngIf="(this.loginForm.get('accno')?.touched || this.loginForm.get('accno')?.dirty) && this.loginForm.get('accno')?.errors" class="error">Invalid Account</div>
                     <div class="box2">
-                        <input id="pass" type="password" placeholder="Password" name='pswd' [(ngModel)]="pswd" class="input">
+                        <input id="pass" type="password" placeholder="Password" name='pswd' formControlName="pswd" class="input">
                     </div>
+                    <div *ngIf="(this.loginForm.get('pswd')?.touched || this.loginForm.get('pswd')?.dirty) && this.loginForm.get('pswd')?.errors" class="error">Invalid Password</div>
                     <div class="for1">
                         <a href="#" class="for">Forget Password?</a>
                     </div>

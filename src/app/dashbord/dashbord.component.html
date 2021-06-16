@@ -1,21 +1,34 @@
 <div class="container">
     <div class="row">
-        <h4 style="text-align: center;">Welcome User</h4>
+        <h4 style="text-align: center;">Welcome {{user}}</h4>
+        <h6>Login at (unformated):{{ldate}}</h6>
+        <h6>Login at(formated):{{ldate|date|uppercase}}</h6>
+        <h6>Login at(formated):{{ldate|date:'shortDate'}}</h6>
+        <app-animationdemo></app-animationdemo>
         <div class="col-4">
-            <div class="main">
-                <form (ngSubmit)='deposit()'>
-                    <h3 class="h">
-                        <marquee direction='right' scrollamount=10s>Deposit</marquee>
-                    </h3>
+            <div [ngClass]='acno?"deleteStyle": "" ' class="main">
+                <form [formGroup]="depositForm" (ngSubmit)='deposit()'>
+                    <h3 class="h" appHighlight>Deposit</h3>
+                    
                     <div class="box1">
-                        <input id="log" type="text"  name='accno' [(ngModel)]='accno' placeholder="Account Number" class="input">
+                        <input id="log" type="text" name='accno' formControlName='accno' placeholder="Account Number"
+                            class="input">
                     </div>
+                    <div *ngIf="(this.depositForm.get('accno')?.touched || this.depositForm.get('accno')?.dirty) && this.depositForm.get('accno')?.errors"
+                        class="error">Invalid Account Number</div>
                     <div class="box2">
-                        <input id="pass" type="password" name='pswd' [(ngModel)]='pswd' placeholder="Password" class="input">
+                        <input id="pass" type="password" name='pswd' formControlName='pswd' placeholder="Password"
+                            class="input">
                     </div>
+                    <div *ngIf="(this.depositForm.get('pswd')?.touched || this.depositForm.get('pswd')?.dirty) && this.depositForm.get('pswd')?.errors"
+                        class="error">Invalid Password</div>
                     <div class="box2">
-                        <input id="amo" type="text" name='amount' [(ngModel)]='amount' placeholder="Amount" class="input">
+                        <input id="amo" type="text" name='amount' formControlName='amount' placeholder="Amount"
+                            class="input">
                     </div>
+                    <div *ngIf="(this.depositForm.get('amount')?.touched || this.depositForm.get('amount')?.dirty) && this.depositForm.get('amount')?.errors"
+                        class="error">Invalid Entry</div>
+
                     <div class="but">
                         <button type="submit" class="btn btn-primary"
                             style="width: 80%; background-color: brown;">Deposit</button>
@@ -23,30 +36,46 @@
                 </form>
             </div>
         </div>
-        <div class="col-4">
 
-        </div>
+        <div class="col-4"> </div>
+
         <div class="col-4">
-            <form (ngSubmit)='withdraw()'>
-                <div class="main">
-                    <h3 class="h">
-                        <marquee direction='left' scrollamount=10s>Withdrawl</marquee>
-                    </h3>
+            <div [ngClass]='acno?"deleteStyle": "" ' class="main">
+                <form [formGroup]='withdrawForm' (ngSubmit)='withdraw()'>
+                
+                    <h3 class="h" appHighlight>Withdrawl</h3>
                     <div class="box1">
-                        <input id="log" type="text" name='waccno' [(ngModel)]='waccno' placeholder="Account Number" class="input">
+                        <input id="log" type="text" name='waccno' formControlName='waccno' placeholder="Account Number"
+                            class="input">
                     </div>
+                    <div *ngIf="(this.withdrawForm.get('waccno')?.touched || this.withdrawForm.get('waccno')?.dirty) && this.withdrawForm.get('waccno')?.errors"
+                        class="error">Invalid Account Number</div>
                     <div class="box2">
-                        <input id="pass" type="password" name='wpswd' [(ngModel)]='wpswd' placeholder="Password" class="input">
+                        <input id="pass" type="password" name='wpswd' formControlName='wpswd' placeholder="Password"
+                            class="input">
                     </div>
+                    <div *ngIf="(this.withdrawForm.get('wpswd')?.touched || this.withdrawForm.get('wpswd')?.dirty) && this.withdrawForm.get('wpswd')?.errors"
+                        class="error">Invalid Password</div>
                     <div class="box2">
-                        <input id="amo" type="text" name='wamount' [(ngModel)]='wamount' placeholder="Amount" class="input">
+                        <input id="amo" type="text" name='wamount' formControlName='wamount' placeholder="Amount"
+                            class="input">
                     </div>
+                    <div *ngIf="(this.withdrawForm.get('wamount')?.touched || this.withdrawForm.get('wamount')?.dirty) && this.withdrawForm.get('wamount')?.errors"
+                        class="error">Invalid Entry</div>
                     <div class="but">
                         <button type="submit" class="btn btn-primary"
                             style="width: 80%; background-color: crimson;">Withdrawl</button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>    
         </div>
+    
+       
     </div>
+    
+    <br>
+    <app-deleteconfirmation (onCancel)='onCancel()' (onDelete)='onDelete($event)' [item]="acno"></app-deleteconfirmation>
+    <br>
+    <button type="submit" style="width: 30%; background-color: crimson;" (click)='deleteAcc()'> Delete Account</button>
+
 </div>
